@@ -142,4 +142,4 @@ test_url= "https://twitter.com/DEAcampaign/status/1199751061474553856"
 print(get_id(test_url))
 print(get_text(test_url))
 print(get_time(test_url))
-print(get_usertest_url))
+print(get_user(test_url))
