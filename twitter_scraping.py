@@ -6,14 +6,14 @@ import random
 message = "rip "
 name = '@CNN‏Politics'
 url = 'https://twitter.com/CNBC/status/861601079313739776'
-theurl = urllib.request.urlopen(url)
-soup = BeautifulSoup(theurl, "html.parser")
+the_url = urllib.request.urlopen(url)
+soup = BeautifulSoup(the_url, "html.parser")
 
 
 def get_id(url):
     # gets stream-item-tweet id
-    theurl = urllib.request.urlopen(url)
-    soup = BeautifulSoup(theurl, "html.parser")
+    the_url = urllib.request.urlopen(url)
+    soup = BeautifulSoup(the_url, "html.parser")
     stream_item = soup.find_all('li', 'stream-item')
     for id in stream_item:
         num = re.sub(r'stream-item-tweet-', "", str(id.get('id')))
@@ -23,7 +23,7 @@ def get_id(url):
 def get_user(url):
     su = re.sub(r'https://twitter.com/', "", url)
     name = re.sub(r'/status/.*', '', su)  # Remove everything after /status/
-    theid = re.sub(r'.*status/', '', url)  # Remove everything before status/
+    the_id = re.sub(r'.*status/', '', url)  # Remove everything before status/
     name = '@' + name
     return name
 
@@ -31,19 +31,19 @@ def get_user(url):
 def tweet_clean(url, message):
     su = re.sub(r'https://twitter.com/', "", url)
     name = re.sub(r'/status/.*', '', su)  # Remove everything after /status/
-    theid = re.sub(r'.*status/', '', url)  # Remove everything before status/
+    the_id = re.sub(r'.*status/', '', url)  # Remove everything before status/
     name = '@' + name
 
     print(url)
     print(name)
-    print(theid)
+    print(the_id)
 
     # api.update_status(message + name, theid)
 
 
 def get_text(url):
-    theurl = urllib.request.urlopen(url)
-    soup = BeautifulSoup(theurl, "html.parser")
+    the_url = urllib.request.urlopen(url)
+    soup = BeautifulSoup(the_url, "html.parser")
     tweet_text = soup.find_all('p', 'js-tweet-text')
     for text in tweet_text:
         # print(text.text)
@@ -55,8 +55,8 @@ def get_text(url):
 def pick():
     url = get_url()
     list = []
-    theurl = urllib.request.urlopen(url)
-    soup = BeautifulSoup(theurl, "html.parser")
+    the_url = urllib.request.urlopen(url)
+    soup = BeautifulSoup(the_url, "html.parser")
     links = soup.find_all("a")
     for link in links:
         line = link.get('href')
@@ -72,8 +72,8 @@ def pick():
 
 def reply_count(url):
     urll = "https://twitter.com" + url
-    theurl = urllib.request.urlopen(urll)
-    soup = BeautifulSoup(theurl, "html.parser")
+    the_url = urllib.request.urlopen(urll)
+    soup = BeautifulSoup(the_url, "html.parser")
     href = []
     clean = []
     all = soup.find_all("a")
@@ -97,10 +97,10 @@ def reply_count(url):
 
 
 def get_time(url):
-    theurl = urllib.request.urlopen(url)
-    soup = BeautifulSoup(theurl, "html.parser")
-    timestamp = soup.find_all('a', 'tweet-timestamp')
-    for time in timestamp:
+    the_url = urllib.request.urlopen(url)
+    soup = BeautifulSoup(the_url, "html.parser")
+    time_stamp = soup.find_all('a', 'tweet-timestamp')
+    for time in time_stamp:
         # print("timestamp: " + time.get("title"))
         print()
 
@@ -137,9 +137,9 @@ def get_url():
 
 
 
-testUrl= "https://twitter.com/DEAcampaign/status/1199751061474553856"
+test_url= "https://twitter.com/DEAcampaign/status/1199751061474553856"
 
-print(get_id(testUrl))
-print(get_text(testUrl))
-print(get_time(testUrl))
-print(get_user(testUrl))
+print(get_id(test_url))
+print(get_text(test_url))
+print(get_time(test_url))
+print(get_usertest_url))
