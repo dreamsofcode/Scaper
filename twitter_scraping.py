@@ -41,8 +41,9 @@ def tweet_clean(url, message):
     # api.update_status(message + name, theid)
 
 
-def get_text():
-    # gets text
+def get_text(url):
+    theurl = urllib.request.urlopen(url)
+    soup = BeautifulSoup(theurl, "html.parser")
     tweet_text = soup.find_all('p', 'js-tweet-text')
     for text in tweet_text:
         # print(text.text)
@@ -132,3 +133,13 @@ def get_url():
 
     return list[ra]
 
+
+
+
+
+testUrl= "https://twitter.com/DEAcampaign/status/1199751061474553856"
+
+print(get_id(testUrl))
+print(get_text(testUrl))
+print(get_time(testUrl))
+print(get_user(testUrl))
