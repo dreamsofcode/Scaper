@@ -28,7 +28,6 @@ def get_user(url):
     return name
 
 
-# used for tweepy but twitter no likey
 def tweet_clean(url, message):
     su = re.sub(r'https://twitter.com/', "", url)
     name = re.sub(r'/status/.*', '', su)  # Remove everything after /status/
