@@ -12,5 +12,6 @@ for i in range(0, count):
     paragraphs = page_content.find_all("p")[i].text
     textContent.append(paragraphs)
    
-print(textContent)
-print(count)
+for i in textContent:
+    print(i+"\n")
+  
